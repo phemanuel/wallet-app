@@ -1,0 +1,90 @@
+composer create-project --prefer-dist laravel/laravel oyschst-ewallet "10.*"
+composer create-project --prefer-dist laravel/laravel oyschst-ewallet-api "10.*"
+composer create-project laravel/laravel oyschst-ewallet 8.x
+cd to directory
+composer update --ignore-platform-reqs
+cp .env.example .env
+php artisan key:generate
+
+composer global require laravel/installer
+laravel new oyschst-wallet
+
+composer config --global platform.php C:\tools\php82\php.exe
+
+composer create-project --prefer-dist laravel/laravel oyschst-wallet
+
+composer require intervention/image
+;extension=gd--remove the semicolon
+
+//=========Laravel 10 CRUD========
+- Configure env file to connect to database
+- Create a resource controller --php artisan make:controller nameof controller --resource
+- Create a model that handles database structure and migration. -- php artisan make:model name of model -m(add migration)
+- Check the model and add more fields then migrate --php artisan migrate
+- Edit the model you created
+- Create auth controller -- php artisan make:controller AuthController
+- Create an auth folder in resource/view
+- Create a new table --php artisan make:migration create_posts_table 
+- Migrate a specific migration --php artisan migrate --path=/database/migrations/2014_10_12_000000_create_users_table.php
+- Create a new table  --php artisan make:migration create_tasks_table
+- Create new column to existing database -- php artisan make:migration add_multiple_columns_to_users
+- adding session and displaying --// Flash a success message to the session
+        session()->flash('success', 'Registration successful! Welcome to our website.');
+		@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+---------------------------------
+-To specify table name in model -- protected $table = 'wallet';
+-----------------------------------
+- To display and edit specific records by id -- 
+Route---
+Route::get('show/$id', 'show')->name('products.show');-----show
+Route::get('edit/$id', 'edit')->name('products.edit');-----edit
+public function show(string $id)
+{
+	$records= records(model name):: findorFail($id);
+	return view('product.edit', compact('records'));
+} 
+------------------------
+- To update specific records by id -- 
+Route::get('edit/$id', 'update')->name('products.update');-----update
+ public function updateProfile(Request $request, string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        
+        return redirect()->route('profile')->with('success', 'Profile update successful.');
+    }
+-To delete
+Route::get('destroy/$id', 'edit')->name('products.delete');-----edit
+public function show(string $id)
+{
+	$records= records(model name):: findorFail($id);
+	$record->delete();
+	return view('product.edit', compact('records'));
+} 
+	
+-Symbolic Link: If you're using the public disk for storing files, you need to create a symbolic link to make the uploaded 
+files accessible from the web. Run the following command in your terminal:--php artisan storage:link
+incase of error, delete the storage folder in the public folder and run --php artisan storage:link
+enable GD library in php ini file ---;extension=gd
+- Crete Api controller --php artisan make:controller Api/UserController --api
+-Create email sending -- 
+Create a mail class -- php artisan make:mail WelcomeDataMail(name of mail class)
+- Paginator scattered 
+App\Providers\AppServiceProvider class:
+use Illuminate\Pagination\Paginator;
+public function boot(): void
+    {
+        //
+        Paginator::useBootstrap();
+    }
+	
+- To add number increment in  blade template -- {{ $loop->iteration }}
+
+
+
+
+

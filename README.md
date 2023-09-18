@@ -1,66 +1,75 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+E-WALLET
+-----
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Introduction
 
-## About Laravel
+E-wallet is a virtual storage system that allows students to securely store, manage, and transact. E-wallet can be used for a wide range of purposes, including bill payments, fund transfers.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The app is able to do the following operations:
 
-## Learning Laravel
+* creating new wallet account.
+* edit existing wallet account.
+* loading wallet account.
+* transfer funds to other wallet account.
+* detailed analysis of transactions.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Tech Stack
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Our tech stack will include:
 
-## Laravel Sponsors
+* **Laravel ORM** to be our ORM library of choice
+* **MYSQL** as our database of choice
+* **LARAVEL 10** and **PHP** as our server language and server framework
+* **Laravel-Migrate** for creating and running schema migrations
+* **HTML**, **CSS**, and **Javascript** with [Bootstrap 3] for our website's frontend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Main Files: Project Structure
 
-### Premium Partners
+  ```sh
+  ├── README.md
+  ├── artisan.php *** the main driver of the app
+  ├── env *** Database configuration settings
+ 
+Overall:
+* Models are located in app/models
+* Controllers are also located in app/http/controllers
+* The web frontend is located in resources/views/
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+MVC pattern
 
-## Contributing
+MODELS: app/models
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+├── User 
+├── wallet_transaction
+├── TransferFund
 
-## Code of Conduct
+VIEW: resources/views/
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+├── Folders
+    ├── auth (Login, reset password,accountsetup blade template)
+    ├── emails (email blade template)
+    ├── layouts (layouts for all blade templates)
+    ├── pages (profile, contact, dashboard blade template)
+    ├── payment (fund wallet, verify wallet, wallet transaction history blade template)
 
-## Security Vulnerabilities
+CONTROLLERS: app/http/controllers
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+├── AuthController : takes care of user authentication
+├── CustomForgotPasswordController : takes care of password recovery
+├── DashboardController : takes care of user dashboard
+├── MailController : takes care of email functions
+├── PaymentController : takes care of payment withing the application
+├── UserController : takes care of user
 
-## License
+ROUTES
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+├── auth routes
+├── payment routes
+├── email routes
+├── Password reset routes
+├── Other pages routes
+
